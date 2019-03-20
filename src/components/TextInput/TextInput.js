@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './TextInput.css';
+import ApiService from '../../services/api-service';
 
 class TextInput extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class TextInput extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { text } = event.target;
-    this.props.setText(text.value);
+    ApiService.postMessage(text.value);
     event.target.text.value = "";
   }
 

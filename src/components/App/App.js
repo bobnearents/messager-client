@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
 import ApiService from '../../services/api-service'
+import { Route } from "react-router-dom";
 import Message from '../Message/Message'
-import TextInput from '../TextInput/TextInput'
-import LoginForm from '../LoginForm/LoginForm'
-import SignupForm from '../SignupForm/SignupForm'
+
+import MainPage from '../../routes/MainPage'
+
+import LoginPage from '../../routes/LoginPage'
+import SignupPage from "../../routes/SignupPage";
 import './App.css'
 
 class App extends Component {
 
   state = {
     messages: []
-  }
-
-  postMessage(content) {
-    ApiService.postMessage(content);
   }
 
   generateMessagesHtml = messagesArray => {
@@ -41,16 +40,25 @@ class App extends Component {
   }
 
   render() {
-    let messagesHtml;
+    let messagesHtml = 'no messages!';
     if (!!this.state.messages){
       messagesHtml = this.generateMessagesHtml(this.state.messages);
     }
     return (
       <div className="App">
-        <SignupForm />
-        <LoginForm />
-        {messagesHtml}
-        <TextInput className = "message-box" setText = {text => this.postMessage(text)}/>
+        <Route
+          exact path = {'/'}
+          render={(props) => <MainPage {...props} messages = {messagesHtml} />}
+        />
+        <Route 
+          path ={'/login'}
+          component = {LoginPage}
+        />
+        <Route
+          path={'/signup'}
+          component={SignupPage}
+        />
+        
       </div>
     );
   }

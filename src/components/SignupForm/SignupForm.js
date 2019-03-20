@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import TokenService from '../../services/token-service';
 import ApiService from "../../services/api-service";
 
 class LoginForm extends Component {
@@ -12,7 +11,12 @@ class LoginForm extends Component {
     ev.preventDefault();
      const { username, password, fullName, nickname } = ev.target;
 
-    ApiService.createUser(username.value,password.value,fullName.value,nickname.value);
+    ApiService.createUser(
+      fullName.value,
+      username.value,
+      password.value,
+      nickname.value
+    );
     username.value = '';
     password.value = '';
     fullName.value = '';
