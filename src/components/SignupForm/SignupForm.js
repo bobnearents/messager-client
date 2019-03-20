@@ -9,17 +9,21 @@ class SignupForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault();
-     const { name } = ev.target;
-
-    ApiService.createForm(
-      name.value
+    const { full_name, username, password, nickname } = ev.target;
+    console.log(username.value)
+    ApiService.createUser(
+      full_name.value,
+      username.value,
+      password.value,
+      nickname.value
     );
-    name.value='';
+    full_name.value='';
+    username.value='';
+    password.value='';
+    nickname.value='';
 
     this.props.onSignupSuccess();
-    // TokenService.saveAuthToken(
-    //   TokenService.makeBasicAuthToken(username.value, password.value)
-    // )
+
   }
 
   render() {
@@ -27,14 +31,14 @@ class SignupForm extends Component {
       <form onSubmit={ev => this.handleSubmit(ev)}>
         <h2>Sign Up!</h2>
 
+        <label htmlFor="full_name">full name: </label>
+        <input type="text" id="full_name" />
+
         <label htmlFor="username">Username: </label>
         <input type="text" id="username" />
 
         <label htmlFor="password">Password: </label>
         <input type="text" id="password" />
-
-        <label htmlFor="fullName">full name: </label>
-        <input type="text" id="fullName" />
 
         <label htmlFor="nickname">nickname: </label>
         <input type="text" id="nickname" />
