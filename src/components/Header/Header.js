@@ -29,7 +29,11 @@ export default class Header extends Component {
     return (
       <>
         <nav className="Header">
+          <select onChange = {ev => this.props.changeRoom(ev.target.value)}>
+            {this.props.rooms}
+          </select>
           {TokenService.hasAuthToken() ? this.renderLogoutLink() : this.renderLoginLink()}
+          <Link to="/createRoom">Make a new room!</Link>
         </nav>
       </>
     );

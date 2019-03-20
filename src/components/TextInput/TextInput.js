@@ -11,7 +11,7 @@ class TextInput extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { text } = event.target;
-    ApiService.postMessage(text.value);
+    ApiService.postMessage(text.value, this.props.room_id);
     event.target.text.value = "";
   }
 

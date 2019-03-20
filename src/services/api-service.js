@@ -8,8 +8,15 @@ const ApiService = {
         return res.json();
       })
   },
+  
+  getRooms() {
+    return fetch(`${config.API_ENDPOINT}/rooms`)
+      .then(res => {
+        return res.json();
+      })
+  },
 
-  postMessage(content) {
+  postMessage(content, room_id) {
     return fetch(`${config.API_ENDPOINT}/messages`, {
       method: "POST",
       headers: {
@@ -17,7 +24,8 @@ const ApiService = {
         "content-type": "application/json"
       },
       body: JSON.stringify({
-        content: content
+        content: content,
+        room_id: room_id,
       })
     }).then(res => res.json);
   },
@@ -33,6 +41,19 @@ const ApiService = {
         username,
         password,
         nickname
+      })
+    }).then(res => res.json);
+  },
+
+  createRoom(name) {
+    return fetch(`${config.API_ENDPOINT}/rooms`, {
+      method: "POST",
+      headers: {
+        "authorization": `bearer ${TokenService.getAuthToken()}`,
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        name
       })
     }).then(res => res.json);
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ApiService from "../../services/api-service";
 
-class LoginForm extends Component {
+class SignupForm extends Component {
   constructor(props) {
     super(props);
     this.state = {}
@@ -9,18 +9,14 @@ class LoginForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault();
-     const { username, password, fullName, nickname } = ev.target;
+     const { name } = ev.target;
 
-    ApiService.createUser(
-      fullName.value,
-      username.value,
-      password.value,
-      nickname.value
+    ApiService.createForm(
+      name.value
     );
-    username.value = '';
-    password.value = '';
-    fullName.value = '';
-    nickname.value = '';
+    name.value='';
+
+    this.props.onSignupSuccess();
     // TokenService.saveAuthToken(
     //   TokenService.makeBasicAuthToken(username.value, password.value)
     // )
@@ -49,4 +45,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default SignupForm;

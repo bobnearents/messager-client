@@ -16,6 +16,7 @@ class LoginForm extends Component {
 
     username.value = '';
     password.value = '';
+    this.props.onLoginSuccess();
   }
 
   render() { 

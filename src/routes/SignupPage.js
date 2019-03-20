@@ -7,9 +7,13 @@ class SignupPage extends Component {
     this.state = {}
   }
 
+  handleSignupSuccess = () => {
+    this.props.history.push('/login')
+  }
+
   render() {
     return (
-      <SignupForm />
+      <SignupForm onSignupSuccess = {this.handleSignupSuccess} />
     );
   }
 }

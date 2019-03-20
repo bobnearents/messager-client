@@ -7,9 +7,13 @@ class LoginPage extends Component {
     this.state = {  }
   }
 
+  handleLoginSuccess = () => {
+    this.props.history.push("/");
+  }
+
   render() { 
     return ( 
-      <LoginForm />
+      <LoginForm onLoginSuccess={this.handleLoginSuccess}/>
      );
   }
 }

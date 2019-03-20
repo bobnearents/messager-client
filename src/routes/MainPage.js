@@ -11,9 +11,9 @@ class LoginPage extends Component {
   render() {
     return (
       <>
-        <Header />
+        <Header rooms = {this.props.rooms} changeRoom = {id => this.props.changeRoom(id)}/>
         {this.props.messages}
-        <TextInput className="message-box" />
+        <TextInput className="message-box" room_id = {this.props.room_id}/>
       </>
     );
   }
