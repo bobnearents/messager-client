@@ -1,0 +1,16 @@
+.message-input {
+  width:80%;
+  height:60px;
+}
+
+.message-input, .message-submit-button {
+  margin:0;
+  padding:0;
+  border:1px solid grey;
+}
+
+.message-submit-button {
+  height:60px;
+  width:19%;
+  background:white;
+}
