@@ -10,7 +10,6 @@ class SignupForm extends Component {
   handleSubmit = ev => {
     ev.preventDefault();
     const { full_name, username, password, nickname } = ev.target;
-    console.log(username.value)
     ApiService.createUser(
       full_name.value,
       username.value,

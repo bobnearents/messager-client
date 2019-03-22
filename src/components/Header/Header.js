@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import TokenService from "../../services/token-service";
+import RoomList from '../RoomList/RoomList'
+import MessageContext from '../../context/message-context'
 
 
 export default class Header extends Component {
+  static contextType = MessageContext;
+
   handleLogoutClick = () => {window.localStorage.clear()};
 
   renderLogoutLink() {
     return (
       <div className="Header__logged-in">
         <Link onClick={this.handleLogoutClick} to="/">
-          Logout
+          Logout {console.log(this.context)}
         </Link>
       </div>
     );
@@ -29,9 +33,7 @@ export default class Header extends Component {
     return (
       <>
         <nav className="Header">
-          <select onChange = {ev => this.props.changeRoom(ev.target.value)}>
-            {this.props.rooms}
-          </select>
+          <RoomList />
           {TokenService.hasAuthToken() ? this.renderLogoutLink() : this.renderLoginLink()}
           <Link to="/createRoom">Make a new room!</Link>
         </nav>

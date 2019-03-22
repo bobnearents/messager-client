@@ -1,46 +1,28 @@
 import React, { Component } from 'react'
 import ApiService from '../../services/api-service'
-import { Route } from "react-router-dom";
-import Message from '../Message/Message'
-
+import { Route, Redirect } from "react-router-dom";
 import MainPage from '../../routes/MainPage'
 import CreateRoomPage from '../../routes/CreateRoomPage'
 import LoginPage from '../../routes/LoginPage'
 import SignupPage from "../../routes/SignupPage";
 import './App.css'
+import MessageContext from '../../context/message-context';
+import LandingPage from '../../routes/LandingPage'
+import TokenService from '../../services/token-service';
+import PrivateRoute from '../Utils/PrivateRoute'
+import PublicOnlyRoute from '../Utils/PublicOnlyRoute'
 
 class App extends Component {
   state = {
     messages: [],
     rooms: [],
-    room_id: 1
+    state: 1,
   };
 
-  changeRoom(id) {
+  changeRoomState(id) {
     this.setState({
       room_id: parseInt(id)
     });
-  }
-
-  generateMessagesHtml = messagesArray => {
-    return messagesArray.map((message, index) => {
-      if (message.room_id === this.state.room_id) {
-        return (
-          <Message
-            text={message.content}
-            key={index}
-            user={message.nickname}
-            date={message.date_created}
-          />
-        );
-      }
-    });
-  };
-
-  generateRoomsHtml = roomsArray => {
-    return roomsArray.map((room, index) => {
-      return <option value={room.id}>{room.name}</option>
-    })
   }
 
   getMessages() {
@@ -66,7 +48,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getRealTimeData();
-    this.timer = setInterval(() => this.getRealTimeData(), 1000);
+    this.timer = setInterval(() => this.getRealTimeData(), 5000);
   }
 
   componentWillUnmount() {
@@ -75,30 +57,35 @@ class App extends Component {
   }
 
   render() {
-    let messagesHtml = "no messages!";
-    if (!!this.state.messages) {
-      messagesHtml = this.generateMessagesHtml(this.state.messages);
-    }
-    const roomsHtml = this.generateRoomsHtml(this.state.rooms);
+    
+    const {room_id, rooms, messages} = this.state;
+    const changeRoom = id => {
+      return this.changeRoomState(id);
+    };
+    const value = {
+      messages,
+      rooms,
+      room_id,
+      changeRoom
+    };
+
     return (
-      <div className="App">
-        <Route
-          exact
-          path={"/"}
-          render={props => (
-            <MainPage
-              {...props}
-              messages={messagesHtml}
-              rooms={roomsHtml}
-              changeRoom={id => this.changeRoom(id)}
-              room_id={this.state.room_id}
-            />
-          )}
-        />
-        <Route path={"/login"} component={LoginPage} />
-        <Route path={"/signup"} component={SignupPage} />
-        <Route path={"/createRoom"} component={CreateRoomPage} />
-      </div>
+      <MessageContext.Provider value = {value} >
+        <div className="App">
+
+          <Route exact path="/" render={() => (
+            TokenService.hasAuthToken() ? (
+              <Redirect to="/rooms/1" />
+            ) : (
+                <LandingPage />
+              )
+          )} />
+          <PrivateRoute path={"/rooms/:id"} component={MainPage} />
+          <PublicOnlyRoute path={"/login"} component={LoginPage} />
+          <PublicOnlyRoute path={"/signup"} component={SignupPage} />
+          <PrivateRoute path={"/createRoom"} component={CreateRoomPage} />
+        </div>
+      </MessageContext.Provider>
     );
   }
 }

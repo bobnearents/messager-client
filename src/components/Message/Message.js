@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Message.css';
+import { Link } from "react-router-dom";
 
 class Message extends Component {
   constructor(props) {
@@ -11,11 +12,11 @@ class Message extends Component {
     return (
       <>
         <p>
-          <big>{this.props.text}</big>
+          <big><Link to={'/messages/:message_id'}>{this.props.text}</Link></big>
           <br />
           <i>
             <small>
-              {this.props.user} | {this.props.date}
+              <Link to={'/user/:user_id'}>{this.props.user}</Link> | {this.props.date}
             </small>
           </i>
         </p>
