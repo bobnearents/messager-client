@@ -19,6 +19,8 @@ class App extends Component {
     state: 1,
   };
 
+  static contextType = MessageContext;
+
   changeRoomState(id) {
     this.setState({
       room_id: parseInt(id)
@@ -26,11 +28,13 @@ class App extends Component {
   }
 
   getMessages() {
-    ApiService.getMessages().then(res => {
-      this.setState({
-        messages: res
+    if (this.state.room_id){
+      ApiService.getMessages(this.state.room_id).then(res => {
+        this.setState({
+          messages: res
+        });
       });
-    });
+    }
   }
 
   getRooms() {
@@ -42,13 +46,15 @@ class App extends Component {
   }
 
   getRealTimeData() {
-    this.getMessages();
-    this.getRooms();
+    if(TokenService.hasAuthToken()){
+      this.getMessages();
+      this.getRooms();
+    }
   }
 
   componentDidMount() {
     this.getRealTimeData();
-    this.timer = setInterval(() => this.getRealTimeData(), 5000);
+    this.timer = setInterval(() => this.getRealTimeData(), 500);
   }
 
   componentWillUnmount() {

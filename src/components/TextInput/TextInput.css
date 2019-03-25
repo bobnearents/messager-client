@@ -1,16 +1,30 @@
 .message-input {
-  width:80%;
-  height:60px;
+  height:40px;
+  width:50%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.message-form {
+  text-align: center;
+  margin-bottom:10px;
+  
 }
 
 .message-input, .message-submit-button {
   margin:0;
   padding:0;
-  border:1px solid grey;
+  border:1px solid black;
 }
 
 .message-submit-button {
-  height:60px;
-  width:19%;
+  height:42px;
+  width:7%;
   background:white;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.message-submit-button:hover {
+  background:lawngreen;
 }

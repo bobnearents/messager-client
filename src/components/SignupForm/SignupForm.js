@@ -37,7 +37,7 @@ class SignupForm extends Component {
         <input type="text" id="username" />
 
         <label htmlFor="password">Password: </label>
-        <input type="text" id="password" />
+        <input type="password" id="password" />
 
         <label htmlFor="nickname">nickname: </label>
         <input type="text" id="nickname" />

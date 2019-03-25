@@ -1,0 +1,16 @@
+.message-list-container {
+  height:90vh;
+  margin:0;
+  width:75%;
+  background:#998C7F;
+  display:inline-block;
+  overflow: hidden;
+}
+
+.message-list {
+  display:inline-flex;
+  flex-direction: column-reverse; 
+  width:100%;
+  overflow-y: scroll;
+  height:60vh;
+}

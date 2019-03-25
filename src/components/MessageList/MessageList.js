@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import MessageContext from '../../context/message-context'
 import Message from '../Message/Message'
+import './MessageList.css'
+import TextInput from '../TextInput/TextInput'
 
 class MessageList extends Component {
   constructor(props) {
@@ -10,7 +12,6 @@ class MessageList extends Component {
   
   generateMessagesHtml = (messagesArray, room_id) => {
     return messagesArray.map((message, index) => {
-      if (message.room_id === room_id) {
         return (
           <Message
             text={message.content}
@@ -19,18 +20,25 @@ class MessageList extends Component {
             date={message.date_created}
           />
         );
-      }
     });
   };
 
   render() {
-     
-    return (  
-      <MessageContext.Consumer>
-        {(value) => {
-          return <>{(this.generateMessagesHtml(value.messages, value.room_id))}</>;
-        }}
-      </MessageContext.Consumer>
+  
+    return (
+        <MessageContext.Consumer>
+          {value => {
+            return (
+              <div className ='message-list-container'>
+                <h2>{value.room_id}</h2>
+                <ul className="message-list">
+                  {this.generateMessagesHtml(value.messages, value.room_id)}
+                </ul>
+                <TextInput />
+              </div>
+            );
+          }}
+        </MessageContext.Consumer>
     );
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import TokenService from "../../services/token-service";
-import RoomList from '../RoomList/RoomList'
+import './Header.css'
 import MessageContext from '../../context/message-context'
 
 
@@ -14,7 +14,7 @@ export default class Header extends Component {
     return (
       <div className="Header__logged-in">
         <Link onClick={this.handleLogoutClick} to="/">
-          Logout {console.log(this.context)}
+          Logout 
         </Link>
       </div>
     );
@@ -33,9 +33,7 @@ export default class Header extends Component {
     return (
       <>
         <nav className="Header">
-          <RoomList />
           {TokenService.hasAuthToken() ? this.renderLogoutLink() : this.renderLoginLink()}
-          <Link to="/createRoom">Make a new room!</Link>
         </nav>
       </>
     );

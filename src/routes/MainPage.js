@@ -3,6 +3,7 @@ import TextInput from '../components/TextInput/TextInput'
 import Header from '../components/Header/Header'
 import MessageList from '../components/MessageList/MessageList'
 import MessageContext from '../context/message-context'
+import RoomList from '../components/RoomList/RoomList'
 
 class LoginPage extends Component {
   constructor(props) {
@@ -24,8 +25,8 @@ class LoginPage extends Component {
           return(
           <>
             <Header />
+            <RoomList />
             <MessageList />
-            <TextInput className="message-box" room_id={room_id} />
           </>
           )
         }}

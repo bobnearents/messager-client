@@ -2,8 +2,8 @@ import config from '../config';
 import TokenService from '../services/token-service'
 const ApiService = {
   
-  getMessages() {
-    return fetch(`${config.API_ENDPOINT}/messages`)
+  getMessages(room_id) {
+    return fetch(`${config.API_ENDPOINT}/messages/${room_id}`)
       .then(res =>{
         return res.json();
       })
@@ -17,7 +17,7 @@ const ApiService = {
   },
 
   postMessage(content, room_id) {
-    return fetch(`${config.API_ENDPOINT}/messages`, {
+    return fetch(`${config.API_ENDPOINT}/messages/${room_id}`, {
       method: "POST",
       headers: {
         "authorization": `bearer ${TokenService.getAuthToken()}`,
