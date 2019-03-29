@@ -15,9 +15,9 @@
 
 ##### responsive design
 ***
-![desktop page](./src/screenshots/mainpage.jpg)
+![mobile page](./src/screenshots/mobile-page.jpg)
 
-![desktop page](./src/screenshots/.jpg)
+![mobile rooms page](./src/screenshots/mobile-rooms.jpg)
 
 ***
 ##### All of this brought to you by:
