@@ -6,6 +6,8 @@
   background:#F9F8F2;
   display:inline-block;
   overflow: hidden;
+  min-height: 0;
+  min-width: 0;
 }
 
 .test {
@@ -21,6 +23,8 @@
   overflow-y: scroll;
   width:100%;
   height:60vh;
+  min-height:0;
+  min-width: 0;
 }
 
 .shared {
@@ -52,8 +56,12 @@
 }
 
 @media(max-width:668px) {
+  .message-list {
+    padding: 20px;
+  }
+
   .message-list p {
-    width:80%;
+    width:75%;
   }
   
   .shared{

@@ -3,8 +3,7 @@
   width:20%;
   height:89.5vh;
   background:#264653;
-  display:inline-flex;
-  overflow: hidden;
+  display:inline-block;
   color:white;
 }
 

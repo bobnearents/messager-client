@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  vertical-align: top;
 }
 @import url('https://fonts.googleapis.com/css?family=Muli');
 
@@ -68,6 +69,7 @@ li {
 
 .lds-circle {
   display: inline-block;
+  color:black;
   transform: translateZ(1px);
 }
 .lds-circle > div {
