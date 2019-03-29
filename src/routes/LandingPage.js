@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import Header from '../components/Header/Header';
-import screenshot from '../screenshot.png'
+import screenshot from '../screenshots/mainpage.png'
 import AuthApiService from '../services/auth-api-service';
 import TokenService from '../services/token-service';
 import MessageContext from '../context/message-context';
