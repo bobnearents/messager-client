@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../components/Header/Header'
 import CreateRoomForm from '../components/CreateRoomForm/CreateRoomForm';
 
 class CreateRoomPage extends Component {
@@ -13,7 +14,10 @@ class CreateRoomPage extends Component {
 
   render() {
     return (
-      <CreateRoomForm onCreateRoomSuccess={this.handleCreateRoomSuccess} />
+      <>
+        <Header />
+        <CreateRoomForm onCreateRoomSuccess={this.handleCreateRoomSuccess} />
+      </>
     );
   }
 }

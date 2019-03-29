@@ -3,18 +3,18 @@ import { shallow } from "enzyme";
 import renderer from "react-test-renderer";
 import { Route, Link, MemoryRouter } from "react-router-dom";
 
-import App from "./App";
+import RoomList from "./RoomList";
 
-describe("<App />", () => {
+describe("<RoomList />", () => {
   it("Renders without crashing", () => {
-    shallow(<App />);
+    shallow(<RoomList />);
   });
 
   it("renders correctly", () => {
     const tree = renderer
       .create(
         <MemoryRouter>
-          <App />
+          <RoomList />
         </MemoryRouter>
       )
       .toJSON();

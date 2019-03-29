@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Message /> renders correctly 1`] = `
+Array [
+  <p>
+    <big />
+    <br />
+    <i>
+      <small />
+    </i>
+  </p>,
+  <br />,
+]
+`;

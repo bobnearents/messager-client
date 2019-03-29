@@ -1,39 +1,38 @@
 import React, { Component } from "react";
+import "./Header.css";
+import MessageContext from "../../context/message-context";
 import { Link } from "react-router-dom";
-import TokenService from "../../services/token-service";
-import './Header.css'
-import MessageContext from '../../context/message-context'
-
+import { FaBars, FaTimes } from "react-icons/fa";
+import TokenService from '../../services/token-service';
 
 export default class Header extends Component {
   static contextType = MessageContext;
 
-  handleLogoutClick = () => {window.localStorage.clear()};
-
-  renderLogoutLink() {
-    return (
-      <div className="Header__logged-in">
-        <Link onClick={this.handleLogoutClick} to="/">
-          Logout 
-        </Link>
-      </div>
-    );
-  }
-
-  renderLoginLink() {
-    return (
-      <div className="Header__not-logged-in">
-        <Link to="/login">Log in</Link>
-        <Link to="/signup">Sign Up</Link>
-      </div>
-    );
+  renderIcon = () => {
+    if(TokenService.hasAuthToken()) {
+      if (this.context.isRoomActive) {
+      return <FaTimes 
+        className="toggle-rooms-bars"
+        onClick={() => {
+        this.context.toggleActiveRoom() }} 
+      />
+    }
+    return <FaBars 
+      className="toggle-rooms-bars"
+      onClick={() => {
+        this.context.toggleActiveRoom()
+      }}
+    />}
   }
 
   render() {
     return (
       <>
         <nav className="Header">
-          {TokenService.hasAuthToken() ? this.renderLogoutLink() : this.renderLoginLink()}
+          <span className='logo'><Link to='/'>messager.</Link></span>
+          <span className = 'user-greeting'>
+          greetings {this.context.user}!</span>
+          {this.renderIcon()}
         </nav>
       </>
     );

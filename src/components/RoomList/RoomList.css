@@ -1,15 +1,95 @@
 .room-list-container {
   margin:0;
-  width:25%;
-  height:90vh;
-  background:#CCBFB2;
-  display:inline-block;
+  width:20%;
+  height:89.5vh;
+  background:#264653;
+  display:inline-flex;
   overflow: hidden;
+  color:white;
 }
 
-.room-list {
+.room-list, .dm-list {
+  height:32%;
+  min-height:150px;
+  padding:0;
   display:inline-flex;
   flex-direction: column; 
   width:100%;
-  overflow-y: scroll;
+  align-items: center;
+  overflow-y:scroll;
+}
+
+
+.room-list div {
+  margin:8px 0;
+  width:100%;
+  padding:4px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.room-list a {
+  width:100%;
+  color:#CFDBD5;
+  text-decoration:none;
+}
+
+.room-list div:hover {
+  background:#192F38;
+}
+
+.current-room{
+  background:#CFDBD5;
+}
+
+.current-room:hover {
+  background:#CFDBD5;
+}
+
+.current-room a {
+  color:#264653;
+}
+
+body .active {
+  display:inline-block;
+}
+
+.inactive {
+  display:none;
+}
+
+.logout {
+  color:#CFDBD5;
+  text-align: center;
+  display:block;
+}
+
+.logout:hover {
+  text-decoration: none;
+}
+
+.add-room {
+  color:#CFDBD5;
+  vertical-align: middle;
+  margin-left:6px;
+  font-size: .9em;
+
+  
+}
+
+.add-room:hover {
+  background:#79C99E;
+  border-radius: 10px;
+  padding:4px;
+  color:black;
+  background:#79C99E;
+}
+
+
+@media(max-width:668px) {
+
+  .room-list-container {
+    display:none;
+    width:100%;
+  }
 }

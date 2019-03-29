@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SignupForm from '../components/SignupForm/SignupForm';
+import Header from '../components/Header/Header'
 
 class SignupPage extends Component {
   constructor(props) {
@@ -7,13 +8,12 @@ class SignupPage extends Component {
     this.state = {}
   }
 
-  handleSignupSuccess = () => {
-    this.props.history.push('/login')
-  }
-
   render() {
     return (
-      <SignupForm onSignupSuccess = {this.handleSignupSuccess} />
+      <>
+        <Header />
+        <SignupForm />
+      </>
     );
   }
 }

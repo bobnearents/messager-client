@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Message.css';
-import { Link } from "react-router-dom";
 
 class Message extends Component {
   constructor(props) {
@@ -8,15 +7,24 @@ class Message extends Component {
     this.state = { }
   }
 
+  prettifyDate = (ISOdate) => {
+    let date = new Date(ISOdate)
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const dt = date.getDate();
+    const time = date.getTime();
+
+    return(month + '/' + dt);
+  }
   render() { 
     return (
       <>
-        <p>
-          <big><Link to={'/messages/:message_id'}>{this.props.text}</Link></big>
+        <p className = {this.props.mine}>
+          <big>{this.props.text}</big>
           <br />
           <i>
             <small>
-              <Link to={'/user/:user_id'}>{this.props.user}</Link> | {this.props.date}
+              {this.props.user} 
             </small>
           </i>
         </p>

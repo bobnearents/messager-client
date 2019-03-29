@@ -1,3 +1,112 @@
+* {
+  box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+body {
+  font-family: 'Muli';
+  background:#F9F8F2;
+}
+
+img {
+  margin-top:40px;
+  min-width:380px;
+  width:70%;
+  height:70%;
+  border:1px solid black;
+  border-radius: 20px;
+  box-shadow:3px 3px 10px black;
+}
+
+::-webkit-scrollbar { 
+  display:none;
+}
+
 h2 {
   text-align: center;
+}
+
+li {
+  list-style-type:none;
+}
+.landing-main {
+  text-align: center;
+  width:70%;
+  margin:auto;
+  display:flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: space-around;
+}
+
+.message-button {
+  box-shadow:0px 1px 2px black;
+  color:black;
+  min-width:95px;
+}
+
+.message-button a {
+  text-decoration: none;  
+  color:black;
+}
+
+.landing-main .mine a {
+  color:white;
+}
+
+.landing-main span {
+  margin:50px;
+  display:block;
+  width:100%;
+}
+
+.message-button:hover {
+  box-shadow: none;
+}
+
+/*loading image*/
+
+.lds-circle {
+  display: inline-block;
+  transform: translateZ(1px);
+}
+.lds-circle > div {
+  display: inline-block;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border-radius: 50%;
+  background: #fff;
+  animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+@keyframes lds-circle {
+  0%, 100% {
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+  }
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(1800deg);
+    animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+  }
+  100% {
+    transform: rotateY(3600deg);
+  }
+}
+
+
+@media(max-width:668px) {
+  img {
+    display:none;
+  }
+  
+  .toggle-rooms {
+    display:none
+  }
+
+  .user-greeting {
+    display: none;
+  }
+  
 }

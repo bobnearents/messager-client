@@ -1,16 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+
 .message-list-container {
-  height:90vh;
+  height:89.5vh;
   margin:0;
-  width:75%;
-  background:#998C7F;
+  background:#F9F8F2;
   display:inline-block;
   overflow: hidden;
 }
 
+.test {
+  font-size: 2em;
+  font-family:'Merriweather';
+}
+
 .message-list {
+  padding:40px;
   display:inline-flex;
   flex-direction: column-reverse; 
-  width:100%;
+  align-items: flex-start;
   overflow-y: scroll;
+  width:100%;
   height:60vh;
+}
+
+.shared {
+  width:80%;
+}
+
+.full {
+  width:100%;
+}
+
+.toggle-rooms {
+  bottom:43vh;
+  transform: translateY(-50%) rotate(-90deg);
+  border:none;
+  background: none;
+  position: absolute;
+}
+
+.toggle-rooms:hover {
+  box-shadow: 1px 1px 3px #888888;
+}
+
+.on {
+  left:19%;
+}
+
+.off {
+  left:-2.5%;
+}
+
+@media(max-width:668px) {
+  .message-list p {
+    width:80%;
+  }
+  
+  .shared{
+    display: none;
+  }
+
+  .message-list-container {
+    width:100%;
+  }
 }

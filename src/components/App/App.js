@@ -1,22 +1,34 @@
 import React, { Component } from 'react'
+import './App.css'
+import 'normalize.css'
 import ApiService from '../../services/api-service'
 import { Route, Redirect } from "react-router-dom";
 import MainPage from '../../routes/MainPage'
 import CreateRoomPage from '../../routes/CreateRoomPage'
 import LoginPage from '../../routes/LoginPage'
 import SignupPage from "../../routes/SignupPage";
-import './App.css'
 import MessageContext from '../../context/message-context';
 import LandingPage from '../../routes/LandingPage'
 import TokenService from '../../services/token-service';
 import PrivateRoute from '../Utils/PrivateRoute'
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute'
 
+//gather, groovy, q, rooms, blarf, adaptchat, ...
+
 class App extends Component {
   state = {
     messages: [],
     rooms: [],
     state: 1,
+    user: 'newcomer',
+    isRoomActive: true,
+    loading:false,
+    loadingTrue: () => {
+      this.setState({ loading: true })
+    },
+    loadingFalse: () => {
+      this.setState({ loading: false })
+    },
   };
 
   static contextType = MessageContext;
@@ -26,6 +38,20 @@ class App extends Component {
       room_id: parseInt(id)
     });
   }
+  
+  setUser(username) {
+    this.setState({
+      user:username
+    });
+  }
+
+  toggleActiveRoom() {
+    let roomStatus = this.state.isRoomActive;
+    this.setState({
+      isRoomActive: !roomStatus
+    })
+  }
+
 
   getMessages() {
     if (this.state.room_id){
@@ -38,10 +64,12 @@ class App extends Component {
   }
 
   getRooms() {
+    
     ApiService.getRooms().then(res => {
       this.setState({
         rooms: res
       });
+      
     });
   }
 
@@ -53,8 +81,14 @@ class App extends Component {
   }
 
   componentDidMount() {
+    if (TokenService.hasAuthToken()){
+      this.setUser(
+        TokenService.getUsername()
+      );
+    }
     this.getRealTimeData();
     this.timer = setInterval(() => this.getRealTimeData(), 500);
+
   }
 
   componentWillUnmount() {
@@ -64,15 +98,28 @@ class App extends Component {
 
   render() {
     
-    const {room_id, rooms, messages} = this.state;
+    const {room_id, rooms, messages, user, isRoomActive, loading, loadingFalse, loadingTrue} = this.state;
     const changeRoom = id => {
       return this.changeRoomState(id);
     };
+    const setUser = username => {
+      return this.setUser(username);
+    };
+    const toggleActiveRoom = () => {
+      return this.toggleActiveRoom()
+    }
     const value = {
       messages,
       rooms,
       room_id,
-      changeRoom
+      changeRoom,
+      setUser,
+      user,
+      isRoomActive,
+      toggleActiveRoom,
+      loading,
+      loadingFalse,
+      loadingTrue
     };
 
     return (

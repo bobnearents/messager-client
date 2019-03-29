@@ -18,7 +18,8 @@
 }
 
 .message-submit-button {
-  height:42px;
+  height:40px;
+  min-width:50px;
   width:7%;
   background:white;
   border-top-right-radius: 10px;
@@ -26,5 +27,13 @@
 }
 
 .message-submit-button:hover {
-  background:lawngreen;
+  background:#79C99E;
+}
+
+
+@media(max-width:668px) {
+  .message-input {
+    width:75%;
+  }
+
 }

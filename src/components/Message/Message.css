@@ -1,8 +1,13 @@
 p {
-  background:#0072c6;
+  background:#F5E9B3;
   width:30%;
-  color:white;
   padding:8px 20px;
   margin:5px;
   border-radius:15px;
+}
+
+.mine {
+  background:#0072c6;
+  align-self: flex-end;
+  color:white;
 }

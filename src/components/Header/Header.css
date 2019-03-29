@@ -1,4 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+
 .Header {
-  background:orange;
+  background:#264653;
+  min-height:60px;
   height:10vh;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding:10px;
+  color:#CFDBD5;
+  z-index: 19;
+}
+
+.Header * {
+  margin-right: 10px;
+  font-size: 1.3em;
+}
+
+.logo {
+  font-family: 'Pacifico';
+  font-size:1.9em;
+  z-index: 20;
+  align-self: flex-start;
+}
+
+.logo a {
+  color:#D5EDE1;
+  text-decoration: none;
+}
+
+.toggle-rooms-bars {
+  display:none;
+}
+
+
+@media(max-width:668px) {
+
+  .toggle-rooms-bars {
+    font-size: 1.5em;
+    display:inline;
+  }
+  
 }

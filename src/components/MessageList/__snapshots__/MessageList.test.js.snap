@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MessageList /> renders correctly 1`] = `
+<div
+  className="full message-list-container"
+>
+  <button
+    className="toggle-rooms off"
+    onClick={[Function]}
+  >
+    View Rooms
+  </button>
+  <h2
+    className="test"
+  >
+    
+  </h2>
+  <ul
+    className="message-list"
+  />
+  <form
+    className="message-form"
+    onSubmit={[Function]}
+  >
+    <input
+      className="message-input"
+      name="text"
+      type="text"
+    />
+    <button
+      className="message-submit-button"
+      type="submit"
+    >
+      Enter
+    </button>
+  </form>
+</div>
+`;

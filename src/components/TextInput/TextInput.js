@@ -12,7 +12,6 @@ class TextInput extends Component {
   static contextType = MessageContext;
 
   handleSubmit = event => {
-    console.log(this.context);
     event.preventDefault();
     const { text } = event.target;
     ApiService.postMessage(text.value, this.context.room_id);

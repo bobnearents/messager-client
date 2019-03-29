@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import TokenService from "../../services/token-service";
 import AuthApiService from "../../services/auth-api-service";
+import MessageContext from "../../context/message-context";
+import { Link } from "react-router-dom";
+import './LoginForm.css';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -8,23 +11,13 @@ class LoginForm extends Component {
     this.state = {};
   }
 
-  handleSubmitBasicAuth = ev => {
-    ev.preventDefault();
-    const { username, password } = ev.target;
-    TokenService.saveAuthToken(
-      TokenService.makeBasicAuthToken(username.value, password.value)
-    );
-
-    username.value = "";
-    password.value = "";
-    this.props.onLoginSuccess();
-  };
+  static contextType = MessageContext;
 
   handleSubmitJwtAuth = ev => {
     ev.preventDefault();
     this.setState({ error: null });
+    this.context.loadingTrue();
     const { username, password } = ev.target;
-
     AuthApiService.postLogin({
       username: username.value,
       password: password.value
@@ -34,20 +27,32 @@ class LoginForm extends Component {
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
         this.props.onLoginSuccess();
+        this.context.loadingFalse();
       })
       .catch(res => {this.setState({error: res.error})})
   };
 
   render() {
+
+    const error = this.state.error;
     return (
-      <form onSubmit={ev => this.handleSubmitJwtAuth(ev)}>
-        <h2>Log in!</h2>
-        <label htmlFor="username">Username: </label>
-        <input type="text" id="username" />
-        <label htmlFor="password">Password: </label>
-        <input type="password" id="password" />
-        <button type="submit">Submit</button>
-      </form>
+      <div className="signup-form">
+        <h2 className='form-header'>Log in!</h2>
+        <form onSubmit={ev => this.handleSubmitJwtAuth(ev)}>
+          {error && <span className='error'>{error}</span>}
+          <label htmlFor="username">Username: </label>
+          <input type="text" id="username" />
+          <label htmlFor="password">Password: </label>
+          <input type="password" id="password" />
+          <button type="submit">Submit</button>
+
+          <div>
+            Don't have an account?
+            <Link to='/signup'>Make one here</Link>
+          </div>
+          
+        </form>
+      </div>
     );
   }
 }

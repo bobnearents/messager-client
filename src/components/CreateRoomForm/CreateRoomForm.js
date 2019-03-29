@@ -13,8 +13,8 @@ class CreateRoomForm extends Component {
 
     ApiService.createRoom(
       name.value,
-      
     );
+    
     name.value = '';
     this.props.onCreateRoomSuccess();
 
@@ -22,13 +22,15 @@ class CreateRoomForm extends Component {
 
   render() {
     return (
-      <form onSubmit={ev => this.handleSubmit(ev)}>
-        <h2>Make a Room!</h2>
+      <div className="signup-form">
+        <h2 className="form-header">Make a Room!</h2>
+        <form onSubmit={ev => this.handleSubmit(ev)}>
 
-        <label htmlFor="name">Room Name: </label>
-        <input type="text" id="name" />
-        <button type="submit">Submit</button>
-      </form>
+          <label htmlFor="name">Room Name: </label>
+          <input type="text" id="name" />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     );
   }
 }

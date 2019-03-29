@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CreateRoomForm /> renders correctly 1`] = `
+<div
+  className="signup-form"
+>
+  <h2
+    className="form-header"
+  >
+    Make a Room!
+  </h2>
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      htmlFor="name"
+    >
+      Room Name: 
+    </label>
+    <input
+      id="name"
+      type="text"
+    />
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;

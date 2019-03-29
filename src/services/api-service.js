@@ -30,7 +30,7 @@ const ApiService = {
     }).then(res => res.json);
   },
 
-  createUser(full_name, username, password, nickname) {
+  createUser(full_name, username, password, nickname, fn) {
     return fetch(`${config.API_ENDPOINT}/signup`, {
       method: "POST",
       headers: {
@@ -40,9 +40,16 @@ const ApiService = {
         full_name,
         username,
         password,
-        nickname
+        nickname,
       })
-    }).then(res => res.json);
+    })
+    .then(res => {
+      if (res.ok) {
+        fn()
+        return res.json()
+      }
+      return res.json().then(e => Promise.reject(e))
+    })
   },
 
   createRoom(name) {
