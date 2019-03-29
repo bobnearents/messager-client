@@ -54,8 +54,7 @@ class MessageList extends Component {
               <div className="room-list">
                 {this.generateRoomsHtml(value.rooms)}
               </div>
-              <h2>Direct Messages</h2>
-              <div className="dm-list" />
+              
               <Link className="logout" onClick={this.handleLogoutClick} to="/">
                 Logout
               </Link>

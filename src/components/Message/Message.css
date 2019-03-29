@@ -1,4 +1,4 @@
-p {
+.message-bubble {
   background:#F5E9B3;
   width:30%;
   padding:8px 20px;
@@ -10,4 +10,19 @@ p {
   background:#0072c6;
   align-self: flex-end;
   color:white;
+}
+
+.message-text {
+  font-size:1.5em;
+  display:block;
+}
+
+.message-user {
+  font-size: .8em;
+  font-style: italic;
+  color:#36454F;
+}
+
+.mine .message-user {
+  display:none;
 }

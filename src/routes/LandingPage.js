@@ -41,10 +41,10 @@ class LoginPage extends Component {
             organize meetings, get a gaming group together, or simply share
             your ideas with the void
           </h3>
-          <p className="message-button">
+          <p className="message-button message-bubble">
             <Link to="/signup">sign up</Link>
           </p>
-          <p className="mine message-button">
+          <p className="mine message-button message-bubble">
             <Link to="/login">log in</Link>
           </p>
 

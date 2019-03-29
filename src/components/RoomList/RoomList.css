@@ -7,15 +7,15 @@
   color:white;
 }
 
-.room-list, .dm-list {
-  height:32%;
+.room-list {
+  height:62%;
   min-height:150px;
   padding:0;
   display:inline-flex;
   flex-direction: column; 
   width:100%;
   align-items: center;
-  overflow-y:scroll;
+  overflow-y:auto;
 }
 
 

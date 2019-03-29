@@ -22,7 +22,7 @@ class MessageList extends Component {
     return name;
   }
   
-  generateMessagesHtml = (messagesArray, room_id) => {
+  generateMessagesHtml = (messagesArray) => {
     return messagesArray.map((message, index) => {
         return (
           <Message
@@ -49,9 +49,9 @@ class MessageList extends Component {
                   {(value.isRoomActive) ? 'Close' : 'View Rooms'}
                 </button>
                 <h2 className = 'test'>{(this.getRoomName(value.room_id))}</h2>
-                <ul className="message-list">
+                <div className="message-list">
                   {this.generateMessagesHtml(value.messages, value.room_id)}
-                </ul>
+                </div>
                 <TextInput />
               </div>
             );

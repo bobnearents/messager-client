@@ -7,26 +7,12 @@ class Message extends Component {
     this.state = { }
   }
 
-  prettifyDate = (ISOdate) => {
-    let date = new Date(ISOdate)
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const dt = date.getDate();
-    const time = date.getTime();
-
-    return(month + '/' + dt);
-  }
   render() { 
     return (
       <>
-        <p className = {this.props.mine}>
-          <big>{this.props.text}</big>
-          <br />
-          <i>
-            <small>
-              {this.props.user} 
-            </small>
-          </i>
+        <p className = {`message-bubble ${this.props.mine}`}>
+          <span className='message-text'> {this.props.text}</span>
+          <span className='message-user'> {this.props.user} </span>
         </p>
         <br />
       </>
