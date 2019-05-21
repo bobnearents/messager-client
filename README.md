@@ -1,7 +1,7 @@
 # Messager
 
 
-#### Message is a great place to chat with friends, organize meetings, get a gaming group together, or simply share your ideas with the void.
+#### Messager is a great place to chat with friends, organize meetings, get a gaming group together, or simply share your ideas with the void.
 [visit here!](http://messager.now.sh)
 
 ##### Each React component is stored at `/src/components/[ component_name ]`
