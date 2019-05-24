@@ -19,7 +19,7 @@ class LoginPage extends Component {
   render() {
     if (this.context.loading) {
       return (
-          <div class="lds-circle">
+          <div className="lds-circle">
             <div />
           </div>
       );

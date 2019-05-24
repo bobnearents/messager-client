@@ -29,7 +29,10 @@ class App extends Component {
     loadingFalse: () => {
       this.setState({ loading: false })
     },
+    
   };
+
+  socket = window.io('ws://localhost:8000');
 
   static contextType = MessageContext;
 
@@ -79,15 +82,21 @@ class App extends Component {
       this.getRooms();
     }
   }
-
+  
   componentDidMount() {
+    this.socket.on('new message', (room_id) => {
+      this.getRealTimeData();
+    })
+    this.socket.on('new room', (room_id) => {
+      this.getRealTimeData();
+    })
     if (TokenService.hasAuthToken()){
       this.setUser(
         TokenService.getUsername()
       );
     }
     this.getRealTimeData();
-    this.timer = setInterval(() => this.getRealTimeData(), 500);
+    // this.timer = setInterval(() => this.getRealTimeData(), 500);
 
   }
 
