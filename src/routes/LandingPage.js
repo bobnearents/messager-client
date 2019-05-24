@@ -51,7 +51,7 @@ class LoginPage extends Component {
           <img src={screenshot} alt="screen shot" />
       
           <span>
-            click <Link onClick={() => this.testLogin()} to="/">here</Link> to chat anonymously
+            click <Link onClick={() => this.testLogin()} to="/">here</Link> to demo the app
           </span>
         </div>
       </>
